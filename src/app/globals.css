@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* The original page switches its mobile layout at max-width:600px (inclusive). */
+@custom-variant mobile (@media (max-width: 600px));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand palette */
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-rule: var(--navy-rule);
+  --color-brand-red: var(--brand-red);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-grey: var(--brand-grey);
+  --color-brand-green: var(--brand-green);
+  --color-mist: var(--mist);
+  --color-on-navy: var(--on-navy);
+  --color-banner-text: var(--banner-text);
+  --color-fine-print: var(--fine-print);
+
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  --font-heading: var(--font-dm-serif), "DM Serif Display", Georgia, serif;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1b2430;
+  --card: #ffffff;
+  --card-foreground: #1b2430;
+  --primary: #b3102c;
+  --primary-foreground: #ffffff;
+  --secondary: #0a1a4a;
+  --secondary-foreground: #ffffff;
+  --muted: #f4f7fb;
+  --muted-foreground: #3a4656;
+  --accent: #f4f7fb;
+  --accent-foreground: #0a1a4a;
+  --destructive: #b3102c;
+  --border: #e3e8ef;
+  --input: #b8c2cf;
+  --ring: #f48420;
+  --radius: 0.5rem;
+
+  --navy: #0a1a4a;
+  --navy-deep: #071338;
+  --navy-rule: #1e2e66;
+  --brand-red: #b3102c;
+  --brand-orange: #f48420;
+  --brand-blue: #1a2d87;
+  --brand-grey: #d3d4d6;
+  --brand-green: #5fc63e;
+  --mist: #f4f7fb;
+  --on-navy: #c9d6e4;
+  --banner-text: #dce6f2;
+  --fine-print: #4a5565;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background font-sans text-[1rem] leading-[1.6] text-foreground;
+  }
+  /* Browser defaults the original relied on, restored after Tailwind preflight. */
+  a {
+    color: var(--navy);
+    text-decoration: underline;
+  }
+  a:hover {
+    color: var(--brand-red);
+  }
+  strong {
+    font-weight: 700;
+  }
+  ::placeholder {
+    color: #757575;
+    opacity: 1;
+  }
+}
+
+/* Unlayered on purpose so these win over component utilities, as in the original. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+*:focus-visible {
+  outline: 3px solid var(--brand-orange);
+  outline-offset: 2px;
+}
